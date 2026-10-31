@@ -1,0 +1,17 @@
+services:
+  copilot:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      SUPPORT_DATA_DIR: /app/demo_data
+      SUPPORT_DB_PATH: /app/work/state/copilot.sqlite3
+      SUPPORT_AI_BACKEND: gemini
+      SUPPORT_EXTERNAL_SCOPE: synthetic
+      SUPPORT_AI: ${SUPPORT_AI:-auto}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.5-flash}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    volumes:
+      - copilot-state:/app/work/state
+volumes:
+  copilot-state:

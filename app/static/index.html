@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142b2a">
+  <meta name="description" content="Локальный помощник поддержки Grand Mobile: очередь обращений, правила и черновики ответов.">
+  <title>Support Copilot · Grand Mobile</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+<svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 5h16l2 10v4H2v-4L4 5Z"/><path d="M2 15h6l2 3h4l2-3h6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 11 3 3 5-5"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8A9 9 0 1 0 21 15M20 3v5h-5"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="m16 3 5 5-12 12-6 1 1-6L16 3Zm-3 3 5 5"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4L22 2ZM11 13 22 2"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Z"/><path d="M12 9v5m0 3v.1"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5C8 2 3 3 3 3v17s5-1 9 2c4-3 9-2 9-2V3s-5-1-9 2Zm0 0v17"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H5v20h14V7l-5-5Zm0 0v6h5M8 12h8m-8 4h8"/></symbol>
+</defs></svg>
+<a class="skip-link" href="#main-content">К содержимому</a>
+<div class="app-shell">
+  <aside class="sidebar" aria-label="Основная навигация">
+    <a class="brand" href="/" aria-label="Support Copilot, главная"><span class="brand-mark">G<span>↗</span></span><span class="brand-copy"><strong>GRAND MOBILE</strong><span>Support Copilot<span class="brand-beta">MVP</span></span></span></a>
+    <div class="workspace-label">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+    <nav class="navigation">
+      <button class="nav-item active" data-view="all" aria-current="page"><svg class="icon"><use href="#i-inbox"/></svg><span>Все обращения</span><span class="nav-count" id="nav-total">0</span></button>
+      <button class="nav-item" data-view="human"><svg class="icon"><use href="#i-user"/></svg><span>Нужен человек</span><span class="nav-count" id="nav-human">0</span></button>
+      <button class="nav-item" data-view="done"><svg class="icon"><use href="#i-check"/></svg><span>Завершённые</span><span class="nav-count" id="nav-done">0</span></button>
+    </nav>
+    <div class="sidebar-explainer"><span class="eyebrow">ЧЕЛОВЕК ПРИНИМАЕТ РЕШЕНИЕ</span><h2>Рутина — помощнику.<br>Решение — вам.</h2><p>Категория, правила и черновик собраны в одном месте.</p><span class="mini-pills"><span>Gemini</span><span>Только демо</span></span></div>
+    <div class="sidebar-bottom"><div class="local-status"><span class="status-dot" id="connection-dot"></span><span id="connection-label">Подключение…</span></div><div class="operator"><span class="avatar operator-avatar">A</span><span><strong>Администратор</strong><small>Локальное рабочее место</small></span><svg class="icon"><use href="#i-shield"/></svg></div></div>
+  </aside>
+  <main id="main-content" class="main-content">
+    <header class="page-header"><div><div class="breadcrumb">ПОДДЕРЖКА <span>/</span> ОЧЕРЕДЬ</div><h1>Обращения игроков<span class="heading-dot">.</span></h1><p class="page-subtitle">Сначала важное. Каждое обращение — под контролем.</p></div><button class="button button-primary" id="new-ticket"><svg class="icon"><use href="#i-plus"/></svg>Новое обращение</button></header>
+    <section class="stats-grid" aria-label="Статистика очереди">
+      <div class="stat-card"><span class="stat-label">Всего в очереди</span><div class="stat-row"><strong id="stat-total">—</strong><span class="stat-icon"><svg class="icon"><use href="#i-inbox"/></svg></span></div><span class="stat-note">Обращения в локальной базе</span></div>
+      <div class="stat-card"><span class="stat-label">Нужен человек</span><div class="stat-row"><strong id="stat-human">—</strong><span class="stat-icon amber"><svg class="icon"><use href="#i-user"/></svg></span></div><span class="stat-note">Ожидают решения администратора</span></div>
+      <div class="stat-card"><span class="stat-label">Высокий приоритет</span><div class="stat-row"><strong id="stat-urgent">—</strong><span class="stat-icon red"><svg class="icon"><use href="#i-alert"/></svg></span></div><span class="stat-note">Критичные и срочные · P0, P1</span></div>
+      <div class="stat-card"><span class="stat-label">Завершены локально</span><div class="stat-row"><strong id="stat-done">—</strong><span class="stat-icon green"><svg class="icon"><use href="#i-check"/></svg></span></div><span class="stat-note">Без отправки в игровую систему</span></div>
+    </section>
+    <div class="workspace-toolbar"><div class="section-title"><span class="section-dot"></span><h2 id="view-title">Вся очередь</h2><span class="count-pill" id="visible-count">0</span></div><div class="toolbar-meta"><span id="rules-meta">База правил</span><button class="icon-button" id="refresh" aria-label="Обновить очередь" title="Обновить очередь"><svg class="icon"><use href="#i-refresh"/></svg></button></div></div>
+    <section class="queue-workspace" aria-label="Очередь и выбранное обращение">
+      <div class="queue-panel"><div class="queue-filters"><label class="search-field"><svg class="icon"><use href="#i-search"/></svg><input id="search" type="search" placeholder="Текст, ник или номер…" aria-label="Поиск обращений" autocomplete="off"></label><div class="select-row"><select id="category-filter" aria-label="Фильтр по категории"><option value="">Все категории</option></select><select id="priority-filter" aria-label="Фильтр по приоритету"><option value="">Приоритет</option></select></div></div><div id="ticket-list" class="ticket-list" aria-label="Список обращений"><div class="loading-state">Загружаем обращения…</div></div><div class="queue-footer"><svg class="icon"><use href="#i-shield"/></svg>Данные остаются на этом устройстве</div></div>
+      <div id="ticket-detail" class="detail-panel" aria-label="Детали обращения"><div class="detail-placeholder"><span class="placeholder-icon"><svg class="icon"><use href="#i-inbox"/></svg></span><h2>Всё начинается с обращения</h2><p>Выберите обращение в очереди или создайте новое.</p></div></div>
+    </section>
+    <footer class="page-footer"><span>Grand Mobile × Decentrathon 6.0</span><span>Support Copilot · Case 03 <span class="footer-dot">•</span> Локальный MVP</span></footer>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="ticket-modal" class="ticket-modal" aria-labelledby="modal-title">
+  <form id="ticket-form"><div class="modal-heading"><div><span class="eyebrow">НОВОЕ ОБРАЩЕНИЕ</span><h2 id="modal-title">Передайте рутину Copilot</h2></div><button type="button" class="icon-button" id="close-modal" aria-label="Закрыть"><svg class="icon"><use href="#i-close"/></svg></button></div><p class="modal-description">Добавьте сообщение игрока. Помощник предложит категорию и подготовит нейтральный черновик.</p>
+  <div class="form-grid"><label>Тип обращения<select name="kind"><option value="report">Репорт / вопрос</option><option value="complaint">Жалоба на игрока</option></select></label><label>Язык игрока<select name="lang"><option value="">Определить по тексту</option><option value="ru">Русский · ru</option><option value="kk">Қазақша · kk</option><option value="uz">Oʻzbekcha · uz</option><option value="en">English · en</option><option value="es">Español · es</option><option value="pt">Português · pt</option><option value="lat">Латиница, язык не определён · lat</option><option value="und">Неизвестный · und</option></select></label></div>
+  <label class="full-label">Сообщение игрока<textarea name="text" required rows="5" maxlength="20000" placeholder="Опишите проблему от лица игрока…"></textarea></label>
+  <div class="form-grid"><label>Ник другого игрока <span class="optional">необязательно</span><input name="reported_nick" maxlength="100" placeholder="Например, Demo_Player"></label><label>Количество вложений <span class="optional">если известно</span><input name="images_count" type="number" min="0" max="1000" placeholder="Неизвестно"></label></div>
+  <details class="optional-fields"><summary>Поля для проверки повторных обращений</summary><div class="form-grid"><label>Хеш заявителя<input name="reporter_hash" maxlength="200" autocomplete="off" placeholder="Локальный идентификатор"></label><label>Дата и время обращения<input name="created_at" type="datetime-local"></label></div><p>Для поиска дублей нужны и заявитель, и время. Анонимные обращения между собой не связываются.</p></details>
+  <div class="form-error" id="form-error" role="alert" hidden></div><div class="modal-footer"><span><svg class="icon"><use href="#i-shield"/></svg>Локальная обработка</span><button type="submit" class="button button-primary" id="create-ticket">Разобрать обращение<svg class="icon"><use href="#i-arrow"/></svg></button></div></form>
+</dialog>
+</body>
+</html>

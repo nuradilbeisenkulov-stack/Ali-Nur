@@ -1,0 +1,27 @@
+{
+  "version":"public-demo-1", "demo":true,
+  "note":"Самостоятельная демонстрационная конфигурация. Не официальная таксономия Grand Mobile. Для кейса подключите файлы организаторов через SUPPORT_DATA_DIR.",
+  "categories":[
+    {"code":"complaint.insult","kind":"complaint","title":"Оскорбления участников","rules":[],"examples":["ругательства в адрес персонажа"]},
+    {"code":"complaint.cheat","kind":"complaint","title":"Подозрение на читы","rules":[],"examples":["возможный аимбот"]},
+    {"code":"complaint.dm","kind":"complaint","title":"Атаки и урон персонажу","rules":[],"examples":["нападение на персонажа"]},
+    {"code":"complaint.scam","kind":"complaint","title":"Обман при обмене имуществом","rules":[],"examples":[]},
+    {"code":"complaint.rmt_ads","kind":"complaint","title":"Реклама сторонних услуг и RMT","rules":[],"examples":[]},
+    {"code":"complaint.admin","kind":"complaint","title":"Обращение о действиях администратора","rules":[],"examples":[]},
+    {"code":"complaint.other","kind":"complaint","title":"Другие ситуации","rules":[],"examples":[]},
+    {"code":"complaint.invalid","kind":"complaint","title":"Неполная жалоба","rules":[],"examples":[]},
+    {"code":"report.question","kind":"report","title":"Вопрос о механике","rules":[],"examples":["как работает получение лицензии"]},
+    {"code":"report.help","kind":"report","title":"Помощь: застрял персонаж, баг","rules":[],"examples":["нужна помощь с перемещением"]},
+    {"code":"report.complaint","kind":"report","title":"Жалоба через репорт","rules":[],"examples":["оскорбления в игре"]},
+    {"code":"report.account","kind":"report","title":"Аккаунт: взлом или потерянный доступ","rules":[],"examples":[]},
+    {"code":"report.payment","kind":"report","title":"Проверка платежа","rules":[],"examples":["донат оплачен"]},
+    {"code":"report.offtopic","kind":"report","title":"Оффтоп и непонятные сообщения","rules":[],"examples":[]}
+  ],
+  "priorities":[
+    {"code":"p0","title":"Срочно","rule":"Платёж, взлом, потеря доступа к аккаунту"},
+    {"code":"p1","title":"Высокий","rule":"Читы, мошенничество с имуществом, жалобы с доказательствами"},
+    {"code":"p2","title":"Стандартный","rule":"Оскорбления, DM, угрозы"},
+    {"code":"p3","title":"Низкий","rule":"Вопросы, оффтоп, жалобы без доказательств"}
+  ],
+  "needs_human_always":["report.account","report.payment","complaint.admin"]
+}
